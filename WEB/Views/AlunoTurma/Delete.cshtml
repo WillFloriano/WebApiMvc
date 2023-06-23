@@ -1,0 +1,45 @@
+﻿@model WEB.Models.AlunoTurmaViewModel
+
+@{
+    ViewData["Title"] = "Deletar";
+}
+
+<h1>Delete associação de alunos e turmas</h1>
+
+<h3>Voce tem certeza que deseja deletar essa relação ?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Aluno_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Aluno_Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Turma_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Turma_Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Turma)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Turma)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input asp-for="Aluno_Id" type="hidden" />
+        <input asp-for="Turma_Id" type="hidden" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <br /><a asp-action="AlunoTurma">Voltar</a>
+    </form>
+</div>

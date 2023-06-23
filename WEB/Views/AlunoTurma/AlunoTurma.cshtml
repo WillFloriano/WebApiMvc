@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WEB.Models.AlunoTurmaViewModel>
+
+@{
+    ViewData["Title"] = "AlunoTurma";
+}
+
+<h1>Aluno/Turma</h1>
+
+<p>
+    <a asp-action="Create">Relacionar turmas a alunos</a>
+</p>
+<hr />
+@if (TempData["AlertMessage"] != null)
+{
+    <h8 class="alert">
+        @TempData["AlertMessage"]
+    </h8>
+}
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turma)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Turma)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { idAluno=item.Aluno_Id, idTurma=item.Turma_Id}) |
+
+                    @Html.ActionLink("Deletar", "Delete", new { idAluno=item.Aluno_Id, idTurma=item.Turma_Id})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WEB.Models.AlunoViewModel>
+
+@{
+    ViewData["Title"] = "Alunos";
+}
+
+<h1>Lista de Alunos</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar novo Aluno</a>
+</p>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <h8 class="alert">
+        @TempData["AlertMessage"]
+    </h8>
+}
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Senha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Situacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Situacao)
+            </td>
+            <td>
+                @Html.ActionLink("Editar/Inativar", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Deletar", "Delete", new { id=item.Id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

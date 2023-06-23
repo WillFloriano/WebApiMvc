@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Vincular";
+}
+
+<h1>Associar alunos e turmas</h1>
+
+<hr />
+@if (TempData["AlertMessage"] != null)
+{
+    <h8 class="alert">
+        @TempData["AlertMessage"]
+    </h8>
+}
+<hr />
+
+@model WEB.Models.AlunoTurmaViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <select class="form-select" asp-items="Model.SelectedAlunoList" asp-for="Aluno_Id">
+                <option>Selecione um Aluno</option>
+                </select>
+                <span asp-validation-for="Aluno_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Turma" class="control-label"></label>
+                <select class="form-select" asp-items="Model.SelectedTurmaList" asp-for="Turma_Id">
+                <option>Selecione uma Turma</option>
+                </select>
+                <span asp-validation-for="Turma_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <br/><input type="submit" value="Associar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   <br/> <a asp-action="AlunoTurma">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
